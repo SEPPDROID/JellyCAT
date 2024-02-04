@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>auth-type</key>
+		<string>js</string>
+		<key>enabled</key>
+		<string>YES</string>
+		<key>menu-title</key>
+		<string>JellyCAT</string>
+		<key>merchant</key>
+		<string>com.jellycat.appletv</string>
+		<key>sandbox-mode</key>
+		<string>NO</string>
+		<key>menu-icon-url</key>
+		<dict>
+			<key>720</key>
+			<string>http://jcathost.dns/assets/img/icons/jcat@720.png</string>
+			<key>1080</key>
+			<string>http://jcathost.dns/assets/img/icons/jcat@1080.png</string>
+		</dict>
+		<key>menu-icon-url-version</key>
+		<string>7</string>
+		<key>app-dictionary</key>
+		<dict>
+			<key>adam-id</key>
+			<integer>700636371</integer>
+			<key>app-version</key>
+			<integer>732333</integer>
+			<key>bundle-identifier</key>
+			<string>com.jellycat.appletv</string>
+			<key>bundle-version</key>
+			<string>1.0</string>
+
+		</dict>
+		<key>javascript-url</key>
+		<string>./js/application.js</string>
+
+
+	</dict>
+</plist>
