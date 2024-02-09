@@ -34,8 +34,6 @@
 
 		</dict>
 		<key>javascript-url</key>
-		<string>./js/application.js</string>
-
-
+		<string>./application.js</string>
 	</dict>
 </plist>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atv>
+    <head>
+        <script src="http://jcathost.dns/js/jcm.js"/>
+    </head>
+    <body>
+        <viewWithNavigationBar id="com.jellycat.homenav" onNavigate="handleNavbarNavigate( event )">
+            <navigation currentIndex="0">
+                <navigationItem id="nav1">
+                    <title>Home</title>
+                    <url></url>
+                </navigationItem>
+                <navigationItem id="nav2">
+                    <title>Favorites</title>
+                    <url></url>
+                </navigationItem>
+                <navigationItem id="nav3">
+                    <title>Movies</title>
+                    <url></url>
+                </navigationItem>
+                <navigationItem id="nav4">
+                    <title>TV-Shows</title>
+                    <url></url>
+                </navigationItem>
+                <navigationItem id="nav5">
+                    <title>Search</title>
+                    <url></url>
+                </navigationItem>
+                <navigationItem id="nav6">
+                    <title>Settings</title>
+                    <url>http://jcathost.dns/xml/settings.xml</url>
+                </navigationItem>
+            </navigation>
+        </viewWithNavigationBar>
+    </body>
+</atv>

@@ -24,7 +24,7 @@ atv.onAppExit = function() {
 // Help I'm even worse at JS
 
 function jcatMain(){
-    atvutils.loadURL("https://" + atv.jcathost.SigHost + "/xml/devtools.xml");
+    atvutils.loadURL("https://" + atv.jcathost.SigHost + "/xml/home.xml");
 }
 
 // ***************************************************

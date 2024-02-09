@@ -6,7 +6,7 @@
     </head>
     <body>
         <optionList id="com.jellycat.storagetestpage" autoSelectSingleItem="false">
-            <footnote>atv.localstorage || storage data elements || JellyCAT</footnote>
+            <footnote>atv.localstorage | atv.sessionstorage | storage data elements | JellyCAT</footnote>
             <items>
                 <oneLineMenuItem id="list_0"  accessibilityLabel="Set test session storage key" onSelect="setTestSessionStorageItem();">
                     <label>Set ATV APP session storage key (test)</label>

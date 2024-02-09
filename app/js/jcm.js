@@ -558,5 +558,164 @@ String.prototype.xmlEncode = function()
     return string;
 };
 
+/**
+ * This is an XHR handler. It handles most of tediousness of the XHR request
+ * and keeps track of onRefresh XHR calls so that we don't end up with multiple
+ * page refresh calls.
+ *
+ * You can see how I call it on the handleRefresh function below.
+ *
+ *
+ * @params object (hash) $options
+ * @params string $options.url - url to be loaded
+ * @params string $options.method - "GET", "POST", "PUT", "DELTE"
+ * @params bool $options.type - false = "Sync" or true = "Async" (You should always use true)
+ * @params func $options.success - Gets called on readyState 4 & status 200
+ * @params func $options.failure - Gets called on readyState 4 & status != 200
+ * @params func $options.callback - Gets called after the success and failure on readyState 4
+ * @params string $options.data - data to be sent to the server
+ * @params bool $options.refresh - Is this a call from the onRefresh event.
+ */
+ATVUtils.Ajax = function($options) {
+    var me = this;
+    $options = $options || {}
+
+    /* Setup properties */
+    this.url = $options.url || false;
+    this.method = $options.method || "GET";
+    this.type = ($options.type === false) ? false : true;
+    this.success = $options.success || null;
+    this.failure = $options.failure || null;
+    this.data = $options.data || null;
+    this.complete = $options.complete || null;
+    this.refresh = $options.refresh || false;
+
+    if(!this.url) {
+        console.error('\nAjax Object requires a url to be passed in: e.g. { "url": "some string" }\n')
+        return undefined;
+    };
+
+    this.id = Date.now();
+
+    this.createRequest();
+
+    this.req.onreadystatechange = this.stateChange;
+
+    this.req.object = this;
+
+    this.open();
+
+    this.send();
+
+};
+
+ATVUtils.Ajax.currentlyRefreshing = false;
+ATVUtils.Ajax.activeRequests = {};
+
+ATVUtils.Ajax.prototype = {
+    stateChange: function() {
+        var me = this.object;
+        switch(this.readyState) {
+            case 1:
+                if(typeof(me.connection) === "function") me.connection(this, me);
+                break;
+            case 2:
+                if(typeof(me.received) === "function") me.received(this, me);
+                break;
+            case 3:
+                if(typeof(me.processing) === "function") me.processing(this, me);
+                break;
+            case 4:
+                if(this.status == "200") {
+                    if(typeof(me.success) === "function") me.success(this, me);
+                } else {
+                    if(typeof(me.failure) === "function") me.failure(this.status, this, me);
+                }
+                if(typeof(me.complete) === "function") me.complete(this, me);
+                if(me.refresh) Ajax.currentlyRefreshing = false;
+                break;
+            default:
+                console.log("I don't think I should be here.");
+                break;
+        }
+    },
+    cancelRequest: function() {
+        this.req.abort();
+        delete ATVUtils.Ajax.activeRequests[ this.id ];
+    },
+    cancelAllActiveRequests: function() {
+        for ( var p in ATVUtils.Ajax.activeRequests ) {
+            if( ATVUtils.Ajax.activeRequests.hasOwnProperty( p ) ) {
+                var obj = ATVUtils.Ajax.activeRequests[ p ];
+                if( ATVUtils.Ajax.prototype.isPrototypeOf( obj ) ) {
+                    obj.req.abort();
+                };
+            };
+        };
+        ATVUtils.Ajax.activeRequests = {};
+    },
+    createRequest: function() {
+        try {
+            this.req = new XMLHttpRequest();
+            ATVUtils.Ajax.activeRequests[ this.id ] = this;
+            if(this.refresh) ATVUtils.Ajax.currentlyRefreshing = true;
+        } catch (error) {
+            alert("The request could not be created: </br>" + error);
+            console.error("failed to create request: " +error);
+        }
+    },
+    open: function() {
+        try {
+            this.req.open(this.method, this.url, this.type);
+        } catch(error) {
+            console.log("failed to open request: " + error);
+        }
+    },
+    send: function() {
+        var data = this.data || null;
+        try {
+            this.req.send(data);
+        } catch(error) {
+            console.log("failed to send request: " + error);
+        }
+    }
+};
+
+function handleNavbarNavigate( event ) {
+    console.log( "Handling the navigation event."+ JSON.stringify( event ) );
+
+    // The navigation item ID is passed in through the event parameter.
+    var navId = event.navigationItemId,
+
+        // Use the event.navigationItemId to retrieve the appropriate URL information this can
+        // retrieved from the document navigation item.
+        docUrl = document.getElementById( navId ).getElementByTagName( 'url' ).textContent,
+
+        // Request the XML document via URL and send any headers you need to here.
+        ajax = new ATVUtils.Ajax({
+            "url": docUrl,
+            "success": function( xhr ){
+                console.log( "successfully loaded the XHR" );
+
+                // After successfully retrieving the document you can manipulate the document
+                // before sending it to the navigation bar.
+                var doc = xhr.responseXML
+
+                // Once the document is ready to load pass it to the event.success function
+                event.success( doc );
+            },
+            "failure": function( status, xhr ){
+                // If the document fails to load pass an error message to the event.failure button
+                event.failure( "Navigation failed to load." );
+            }
+        });
+
+    event.onCancel = function() {
+        console.log("nav bar nagivation was cancelled");
+        // declare an onCancel handler to handle cleanup if the user presses the menu button before the page loads.
+    }
+
+}
+
 console.log('Reached EOF!');
 
