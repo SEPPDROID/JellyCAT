@@ -112,7 +112,7 @@ func displayCinfo() {
 	fmt.Println("|                                     	|")
 	fmt.Println("|             *** WEB ***        	|")
 	fmt.Println("|                                     	|")
-	fmt.Println("|   https_port  = ", config.HttpsPort, "		|")
+	fmt.Println("|   https_port  = ", config.HttpsPort, "			|")
 	fmt.Println("|   https_port  = ", config.HttpPort, "		|")
 	fmt.Println("|                                     	|")
 	fmt.Println("=========================================")

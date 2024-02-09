@@ -2,30 +2,10 @@
 // { ' ' } JellyCAT
 //  \____\
 
-atv.config = {
-    doesJavaScriptLoadRoot: true
-};
-
-atv.onAppEntry = function () {
-    fetchSettings(function() {
-        overrideConsoleLog();
-        console.log("Successfully overwritten console log, sending logs to JCATHOST now.")
-        console.log("Received ATVCSETTINGS From JCATHOST. And starting JellyCAT-APP-JS on AppleTV...");
-        jcatMain();
-    });
-}
-
-atv.onAppExit = function() {
-    console.log('Exiting App!');
-};
-
-// ***************************************************
-// JellyCAT Main | Main JS app function
-// Help I'm even worse at JS
-
-function jcatMain(){
-    atvutils.loadURL("https://" + atv.jcathost.SigHost + "/xml/devtools.xml");
-}
+fetchSettings(function() {
+    overrideConsoleLog();
+    console.log("Successfully retrieved settings & overwritten console log (JCM), sending logs to JCATHOST now.")
+});
 
 // ***************************************************
 // JellyCAT Logger | Jclogger
@@ -62,6 +42,7 @@ function overrideConsoleLog() {
 }
 
 // Function to log console information to the server
+// This however opens up a POI for attackers, so only leave this exposed in a dev environment. #todo: add in RM.MD
 function logToServer(logData) {
     var logEndpoint = "https://" + atv.jcathost.SigHost + "/log";
 
@@ -577,5 +558,5 @@ String.prototype.xmlEncode = function()
     return string;
 };
 
-console.log('EOF!');
+console.log('Reached EOF!');
 
