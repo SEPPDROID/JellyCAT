@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atv>
+    <head>
+        <script src="http://jcathost.dns/js/jcm.js"/>
+        <script src="http://jcathost.dns/js/jellyfin-setup.js"/>
+    </head>
+    <body>
+        <listWithPreview id="com.jellycat.jellyfin-server-settings">
+            <header>
+                <simpleHeader accessibilityLabel="Menu items">
+                    <title>Jellyfin Server Settings</title>
+                </simpleHeader>
+            </header>
+            <preview>
+                <crossFadePreview>
+                    <image>http://jcathost.dns/assets/img/jfserver.png</image>
+                </crossFadePreview>
+            </preview>
+            <menu>
+                <initialSelection>
+                    <row>3</row>
+                </initialSelection>
+                <sections>
+                    <menuSection>
+                        <items>
+                            <oneLineMenuItem accessibilityLabel="List item 0" id="list_0" onSelect="setServerAddress();">
+                                <label>Server Address</label>
+                                <rightLabel>(not set)</rightLabel>
+                            </oneLineMenuItem>
+                            <oneLineMenuItem accessibilityLabel="List item 1" id="list_1" onSelect="setUsername();">
+                                <label>Server Username</label>
+                                <rightLabel>(not set)</rightLabel>
+                            </oneLineMenuItem>
+                            <oneLineMenuItem accessibilityLabel="List item 2" id="list_2" onSelect="setPassword();">
+                                <label>Server Password</label>
+                                <rightLabel>(always hidden)</rightLabel>
+                            </oneLineMenuItem>
+                            <oneLineMenuItem accessibilityLabel="List item 3" id="list_3" onSelect="">
+                                <label>Test connection</label>
+                            </oneLineMenuItem>
+                            <oneLineMenuItem accessibilityLabel="List item 4" id="list_4" onSelect="console.log('Logging out and clearing storage'); atv.localStorage.clear(); atv.sessionStorage.clear(); atv.exitApp();">
+                                <label>Remove saved data</label>
+                            </oneLineMenuItem>
+                        </items>
+                    </menuSection>
+                </sections>
+            </menu>
+        </listWithPreview>
+    </body>
+</atv>

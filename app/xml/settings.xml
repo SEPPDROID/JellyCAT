@@ -2,6 +2,7 @@
 <atv>
     <head>
         <script src="http://jcathost.dns/js/jcm.js"/>
+        <script src="http://jcathost.dns/js/about.js"/>
     </head>
     <body>
         <listWithPreview id="com.jellycat.settings">
@@ -24,14 +25,16 @@
                             </horizontalDivider>
                         </header>
                         <items>
-                            <oneLineMenuItem id="list_center_1" accessibilityLabel="Menu Item 1">
-                                <label>Menu item title</label>
-                            </oneLineMenuItem>
+                            <twoLineMenuItem id="list_center_1" accessibilityLabel="Menu Item 1" onSelect="atvutils.loadURL('https://' + atv.jcathost.SigHost + '/xml/server-settings.xml');">
+                                <label>Jellyfin Server Settings</label>
+                                <label2>Set Jellyfin Server and User</label2>
+                                <image>http://jcathost.dns/assets/img/jfserver.png</image>
+                            </twoLineMenuItem>
                             <oneLineMenuItem id="list_center_2" accessibilityLabel="Menu Item 2">
-                                <label>Menu item title</label>
+                                <label>Audio and Video settings</label>
                             </oneLineMenuItem>
                             <oneLineMenuItem id="list_center_3" accessibilityLabel="Menu Item 3">
-                                <label>Menu item title</label>
+                                <label>Advanced settings</label>
                             </oneLineMenuItem>
                         </items>
                     </menuSection>
@@ -45,7 +48,7 @@
                             <oneLineMenuItem id="list_center_1" accessibilityLabel="tools" onSelect="atvutils.loadURL('https://' + atv.jcathost.SigHost + '/xml/dvt/devtools.xml');">
                                 <label>Tools</label>
                             </oneLineMenuItem>
-                            <oneLineMenuItem id="list_center_1" accessibilityLabel="about" onSelect="atvutils.loadURL('https://' + atv.jcathost.SigHost + '/xml/about.xml');">
+                            <oneLineMenuItem id="list_center_1" accessibilityLabel="about" onSelect="generateJCATAboutXML();">
                                 <label>About</label>
                             </oneLineMenuItem>
                             <oneLineMenuItem id="list_center_1" accessibilityLabel="about" onSelect="atvutils.loadURL('https://' + atv.jcathost.SigHost + '/xml/help.xml');">

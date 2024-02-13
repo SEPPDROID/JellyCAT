@@ -4,7 +4,7 @@
 
 function printSessionStorage() {
 
-    var keys = ['test', 'exampleKey2', 'exampleKey3'];
+    var keys = ['test', 'exampleKey'];
 
     keys.forEach(function(key) {
         var value = atv.sessionStorage.getItem(key);
@@ -18,7 +18,7 @@ function printSessionStorage() {
 
 function printLocalStorage() {
 
-    var keys = ['test', 'exampleKey2', 'exampleKey3'];
+    var keys = ['test', 'jellyfin_server_address', 'jellyfin_username', 'jellyfin_password', 'jellyfin_auth'];
 
     keys.forEach(function(key) {
         var value = atv.localStorage.getItem(key);

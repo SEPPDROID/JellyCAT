@@ -3,6 +3,7 @@
     <head>
         <script src="http://jcathost.dns/js/jcm.js"/>
         <script src="http://jcathost.dns/js/jcathostinfo.js"/>
+        <script src="http://jcathost.dns/js/about.js"/>
     </head>
     <body>
         <optionDialog id="com.jellycat.devtools">
