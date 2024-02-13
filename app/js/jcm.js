@@ -946,5 +946,65 @@ var DomViewManager = ( function() {
 
 // ------ End DOM View Manager --------
 
+// ***************************************************
+// Extra's
+// PlexConnect ATV UTILS
+// https://github.com/iBaa/PlexConnect/blob/master/assets/js/utils.js
+// Some
+
+// atv.Document extensions
+if( atv.Document ) {
+    atv.Document.prototype.getElementById = function(id) {
+        var elements = this.evaluateXPath("//*[@id='" + id + "']", this);
+        if ( elements && elements.length > 0 ) {
+            return elements[0];
+        }
+        return undefined;
+    }
+}
+
+
+// atv.Element extensions
+if( atv.Element ) {
+    atv.Element.prototype.getElementsByTagName = function(tagName) {
+        return this.ownerDocument.evaluateXPath("descendant::" + tagName, this);
+    }
+
+    atv.Element.prototype.getElementByTagName = function(tagName) {
+        var elements = this.getElementsByTagName(tagName);
+        if ( elements && elements.length > 0 ) {
+            return elements[0];
+        }
+        return undefined;
+    }
+}
+
+
+// string extension: format()
+// see http://stackoverflow.com/a/4673436
+if (!String.prototype.format) {
+    String.prototype.format = function() {
+        var args = arguments;
+        return this.replace(/{(\d+)}/g, function(match, number) {
+            return typeof args[number] != 'undefined' ? args[number] : match;
+        });
+    };
+}
+
+// Always love a good hack haha!
+/*
+ * xml updater Major Hack :)
+ */
+function updateContextXML()
+{
+    xmlstr = '<atv><body><optionList id="fakeUpdater" autoSelectSingleItem="true"> \
+            <items><oneLineMenuItem id="0" onSelect="atv.unloadPage()"><label></label> \
+            </oneLineMenuItem></items></optionList></body></atv>';
+    xmlDoc = atv.parseXML(xmlstr);
+    atv.loadXML(xmlDoc);
+}
+
+
+
 console.log('Reached EOF!');
 

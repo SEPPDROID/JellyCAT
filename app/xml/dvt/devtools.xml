@@ -3,7 +3,6 @@
     <head>
         <script src="http://jcathost.dns/js/jcm.js"/>
         <script src="http://jcathost.dns/js/jcathostinfo.js"/>
-        <script src="http://jcathost.dns/js/about.js"/>
     </head>
     <body>
         <optionDialog id="com.jellycat.devtools">
@@ -16,7 +15,7 @@
             <description>These options are intended for testing your development environment only. It is crucial to refrain from utilizing these test functions on server hosts that are not under your management, as doing so may inadvertently expose sensitive data to the server's administrator.</description>
             <menu>
                 <initialSelection>
-                    <row>5</row>
+                    <row>7</row>
                 </initialSelection>
                 <sections>
                     <menuSection>
@@ -36,7 +35,13 @@
                             <oneLineMenuItem id="list_4" accessibilityLabel="Option 5" onSelect="console.log('loading jcathostinfo-page'); generateJCATHOSTInfoXML();">
                                 <label>JCATHOST Information</label>
                             </oneLineMenuItem>
-                            <oneLineMenuItem id="list_5" accessibilityLabel="Option 6" onSelect="console.log('Unloading page'); atv.unloadPage();">
+                            <oneLineMenuItem id="list_5" accessibilityLabel="Option 6" onSelect="console.log('UDID: ' + atv.device.udid);">
+                                <label>Print device UDID (log)</label>
+                            </oneLineMenuItem>
+                            <oneLineMenuItem id="list_6" accessibilityLabel="Option 7" onSelect="console.log('UDID: ' + atv.device.displayName);">
+                                <label>Print device DisplayName (log)</label>
+                            </oneLineMenuItem>
+                            <oneLineMenuItem id="list_7" accessibilityLabel="Option 8" onSelect="console.log('Unloading page'); atv.unloadPage();">
                                 <label>Unload Page (go back)</label>
                             </oneLineMenuItem>
                         </items>

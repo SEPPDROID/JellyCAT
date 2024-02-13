@@ -3,6 +3,7 @@
     <head>
         <script src="http://jcathost.dns/js/jcm.js"/>
         <script src="http://jcathost.dns/js/about.js"/>
+        <script src="http://jcathost.dns/js/settingloader.js"/>
     </head>
     <body>
         <listWithPreview id="com.jellycat.settings">
@@ -25,7 +26,7 @@
                             </horizontalDivider>
                         </header>
                         <items>
-                            <twoLineMenuItem id="list_center_1" accessibilityLabel="Menu Item 1" onSelect="atvutils.loadURL('https://' + atv.jcathost.SigHost + '/xml/server-settings.xml');">
+                            <twoLineMenuItem id="list_center_1" accessibilityLabel="Menu Item 1" onSelect="loadServerSettings();">
                                 <label>Jellyfin Server Settings</label>
                                 <label2>Set Jellyfin Server and User</label2>
                                 <image>http://jcathost.dns/assets/img/jfserver.png</image>
@@ -48,7 +49,7 @@
                             <oneLineMenuItem id="list_center_1" accessibilityLabel="tools" onSelect="atvutils.loadURL('https://' + atv.jcathost.SigHost + '/xml/dvt/devtools.xml');">
                                 <label>Tools</label>
                             </oneLineMenuItem>
-                            <oneLineMenuItem id="list_center_1" accessibilityLabel="about" onSelect="generateJCATAboutXML();">
+                            <oneLineMenuItem id="list_center_1" accessibilityLabel="about" onSelect="loadAbout()">
                                 <label>About</label>
                             </oneLineMenuItem>
                             <oneLineMenuItem id="list_center_1" accessibilityLabel="about" onSelect="atvutils.loadURL('https://' + atv.jcathost.SigHost + '/xml/help.xml');">

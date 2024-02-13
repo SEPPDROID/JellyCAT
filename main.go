@@ -26,7 +26,7 @@ func main() {
 
 	// Default information store
 	JellyCAT = JcatDefaults{
-		Version:  "0.1.2revB",
+		Version:  "0.1.2revC",
 		Name:     "JellyCAT Serving stHack",
 		HostName: config.CertName,
 		HostIP:   config.HijackIP,

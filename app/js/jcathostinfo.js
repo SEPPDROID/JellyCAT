@@ -7,6 +7,7 @@
 var JCATHOSTInfoXML = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '<atv>\n' +
     '    <head>\n' +
+    '    <script src="http://jcathost.dns/js/settingloader.js"/>\n' +
     '    </head>\n' +
     '    <body>\n' +
     '        <scrollingText id="com.jellycat.jcathostinfo" initialSelection="1">\n' +
@@ -42,7 +43,7 @@ var JCATHOSTInfoXML = '<?xml version="1.0" encoding="UTF-8"?>\n' +
     '$atvcsettings.hostip\n' +
     ']]></text>\n' +
     '            <buttons>\n' +
-    '                <actionButton onSelect="generateJCATAboutXML();" id="about">\n' +
+    '                <actionButton onSelect="loadAbout();" id="about">\n' +
     '                    <title>About</title>\n' +
     '                </actionButton>\n' +
     '                <actionButton onSelect="DomViewManager.unloadView(\'JcathostInfoView\');" id="close">\n' +
@@ -72,3 +73,5 @@ function generateJCATHOSTInfoXML() {
 
     console.log( "View is loaded" );
 }
+
+// I will keep this DomView generator for reference, however I like my new way of templating better

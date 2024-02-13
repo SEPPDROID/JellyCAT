@@ -11,13 +11,14 @@ import (
 )
 
 type Config struct {
-	HijackIP  string `toml:"hijack_ip"`
-	HijackApp string `toml:"hijack_app"`
-	HijackImg string `toml:"hijack_img"`
-	ForwardIP string `toml:"forward_ip"`
-	HttpsPort string `toml:"https_port"`
-	HttpPort  string `toml:"http_port"`
-	CertName  string `toml:"common_name"`
+	HijackIP    string `toml:"hijack_ip"`
+	HijackApp   string `toml:"hijack_app"`
+	HijackImg   string `toml:"hijack_img"`
+	ForwardIP   string `toml:"forward_ip"`
+	ForwardPort string `toml:"forward_port"`
+	HttpsPort   string `toml:"https_port"`
+	HttpPort    string `toml:"http_port"`
+	CertName    string `toml:"common_name"`
 }
 
 var config Config

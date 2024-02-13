@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atv>
+    <head>
+    </head>
+    <body>
+        <scrollingText id="com.jellycat.jcatabout" initialSelection="1">
+            <title>JellyCAT About</title>
+            <text><![CDATA[
+//  /\_/ |
+// { '  '  }   JellyCAT
+//  \____\
+
+ENGLISH | ABOUT
+
+JellyCAT $atvcsettings.version
+
+Thank you for using JellyCAT! A (hacky) Jellyfin client for Apple TV 2 & 3.
+
+== soon more ==
+
+-=JellyCAT Server (JCHOST) Information=-
+
+
+JellyCAT Server Host (fallback):
+http://jcathost.dns
+
+ATVCSETTINGS pick-up location:
+http://jcathost.dns/atvcsettings
+
+ATVCSETTINGS Hello:
+$atvcsettings.hello
+
+ATVCSETTINGS System Information:
+$atvcsettings.system
+
+JellyCat Version:
+$atvcsettings.version
+
+Hijacked Host App domain
+$atvcsettings.sighost
+
+JellyCAT Server Host IP
+$atvcsettings.hostip
+
+-=Jellyfin Client settings=-
+      ]]></text>
+            <buttons>
+                <actionButton onSelect="atv.unloadPage();" id="close">
+                    <title>Close</title>
+                </actionButton>
+            </buttons>
+        </scrollingText>
+    </body>
+</atv>

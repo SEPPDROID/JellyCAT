@@ -67,7 +67,7 @@ func addHijackedAnswer(m *dns.Msg, name string) {
 
 func forwardRequest(m *dns.Msg, r *dns.Msg) {
 	resolver := &dns.Client{}
-	resp, _, err := resolver.Exchange(r, net.JoinHostPort(config.ForwardIP, "53"))
+	resp, _, err := resolver.Exchange(r, net.JoinHostPort(config.ForwardIP, config.ForwardPort))
 	if err == nil {
 		m.Answer = append(m.Answer, resp.Answer...)
 	}

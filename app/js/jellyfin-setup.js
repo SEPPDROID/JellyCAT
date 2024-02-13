@@ -27,9 +27,10 @@ function setServerAddress() {
         function(value) {
             // Save server address to localStorage
             atv.localStorage['jellyfin_server_address'] = value;
+            fetchDataAndRender();
         },
         function() {
-
+            fetchDataAndRender();
         },
         atv.localStorage['jellyfin_server_address'] || ""
     );
@@ -44,9 +45,10 @@ function setUsername() {
         function(value) {
             // Save username to localStorage
             atv.localStorage['jellyfin_username'] = value;
+            fetchDataAndRender();
         },
         function() {
-
+            fetchDataAndRender();
         },
         atv.localStorage['jellyfin_username'] || ""
     );
@@ -61,10 +63,30 @@ function setPassword() {
         function(value) {
             // Save password to localStorage
             atv.localStorage['jellyfin_password'] = value;
+            fetchDataAndRender();
         },
         function() {
-
+            fetchDataAndRender();
         },
         atv.localStorage['jellyfin_password'] || ""
+
     );
+}
+
+// Let's try finding and changing the values
+
+function fetchDataAndRender() {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var xmlstr = xhttp.responseText;
+            var serverAddress = atv.localStorage['jellyfin_server_address'];
+            var username = atv.localStorage['jellyfin_username'];
+            var modifiedXml = xmlstr.replace(/\$server_address/g, serverAddress).replace(/\$username/g, username);
+            var xmlDoc = atv.parseXML(modifiedXml);
+            atv.loadAndSwapXML(xmlDoc);
+        }
+    };
+    xhttp.open("GET", 'https://' + atv.jcathost.SigHost + '/xml/server-settings.xml', true);
+    xhttp.send();
 }
