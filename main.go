@@ -26,7 +26,7 @@ func main() {
 
 	// Default information store
 	JellyCAT = JcatDefaults{
-		Version:  "0.1.2revC",
+		Version:  "0.1.3revA",
 		Name:     "JellyCAT Serving stHack",
 		HostName: config.CertName,
 		HostIP:   config.HijackIP,
@@ -37,13 +37,21 @@ func main() {
 	fmt.Println("			JellyCAT", JellyCAT.Version)
 	fmt.Println()
 
-	// DNS Server & Resolver function for hijacking and forwarding DNS requests
-	fmt.Println("SYS-LOG: 		Attempting to start DNS Server...")
-	dnsResolver()
+	if config.DnsServEN {
+		// DNS Server & Resolver function for hijacking and forwarding DNS requests
+		fmt.Println("SYS-LOG: 		Attempting to start DNS Server...")
+		dnsResolver()
+	} else {
+		fmt.Println("SYS-LOG: 		DNS Server disabled ")
+	}
 
-	// Webserver for serving x and app to the ATV
-	fmt.Println("SYS-LOG: 		Attempting to start WEB Server...")
-	webServer()
+	if config.WebServEN {
+		// Webserver for serving x and app to the ATV
+		fmt.Println("SYS-LOG: 		Attempting to start WEB Server...")
+		webServer()
+	} else {
+		fmt.Println("SYS-LOG: 		WEB Server disabled ")
+	}
 
 	// App main for any other server-sided logic
 	fmt.Println("SYS-LOG: 		Attempting to start JellyCAT-Main...")

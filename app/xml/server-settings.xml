@@ -35,7 +35,7 @@
                                 <label>Server Password</label>
                                 <rightLabel>(always hidden)</rightLabel>
                             </oneLineMenuItem>
-                            <oneLineMenuItem accessibilityLabel="List item 3" id="list_3" onSelect="testJellyfinConnection();">
+                            <oneLineMenuItem accessibilityLabel="List item 3" id="list_3" onSelect="getJellyfinInfo();">
                                 <label>Test Connection</label>
                             </oneLineMenuItem>
                             <oneLineMenuItem accessibilityLabel="List item 4" id="list_4" onSelect="console.log('Logging out and clearing storage'); atv.localStorage.clear(); atv.sessionStorage.clear(); atv.exitApp();">

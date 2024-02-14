@@ -11,6 +11,8 @@ import (
 )
 
 type Config struct {
+	DnsServEN   bool   `toml:"dns_server_en"`
+	WebServEN   bool   `toml:"web_server_en"`
 	HijackIP    string `toml:"hijack_ip"`
 	HijackApp   string `toml:"hijack_app"`
 	HijackImg   string `toml:"hijack_img"`
@@ -18,6 +20,7 @@ type Config struct {
 	ForwardPort string `toml:"forward_port"`
 	HttpsPort   string `toml:"https_port"`
 	HttpPort    string `toml:"http_port"`
+	JfRevURL    string `toml:"jellyfin_url"`
 	CertName    string `toml:"common_name"`
 }
 

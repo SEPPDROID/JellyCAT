@@ -43,6 +43,12 @@ JellyCAT Server Host IP
 $atvcsettings.hostip
 
 -=Jellyfin Client settings=-
+
+Jellyfin Server
+$jellyfin.server_address
+
+Jellyfin User
+$jellyfin.username
       ]]></text>
             <buttons>
                 <actionButton onSelect="atv.unloadPage();" id="close">

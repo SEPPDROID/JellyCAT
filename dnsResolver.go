@@ -49,7 +49,7 @@ func handleDNSRequest(w dns.ResponseWriter, r *dns.Msg) {
 }
 
 func shouldHijack(name string, qtype uint16) bool {
-	return (name == config.HijackApp || name == config.HijackImg || name == "jcathost.dns.") && (qtype == dns.TypeA || qtype == dns.TypeAAAA)
+	return (name == config.HijackApp || name == config.HijackImg || name == "jcathost.dns." || name == "jellyfin.dns.") && (qtype == dns.TypeA || qtype == dns.TypeAAAA)
 }
 
 func handleHijackedRequest(name string) {

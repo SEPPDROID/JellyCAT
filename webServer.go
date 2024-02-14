@@ -9,6 +9,8 @@ import (
 	"fmt"
 	"io"
 	"net/http"
+	"net/http/httputil"
+	"net/url"
 )
 
 type ATVCSettings struct {
@@ -38,7 +40,25 @@ func webServer() {
 
 func startHTTPSServer(certFile, keyFile string) {
 	fileServer := http.FileServer(http.Dir("app"))
-	http.Handle("/", logHandler(fileServer))
+
+	targetURL, _ := url.Parse(config.JfRevURL)
+
+	reverseProxy := httputil.NewSingleHostReverseProxy(targetURL)
+
+	// Define a handler function that checks the request's host and path
+	http.Handle("/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Check if the request's host is jellyfin.dns and reverse proxies it
+		if r.Host == "jellyfin.dns" {
+			// Pass the request to the reverse proxy
+			fmt.Print("\033[A\r")
+			fmt.Printf("WEB.SERVER-LOG:         ReverseProxy: [%s] %s %s%s to %s \n", r.RemoteAddr, r.Method, r.Host, r.URL, targetURL)
+			resetCommand()
+			reverseProxy.ServeHTTP(w, r)
+		} else {
+			// Otherwise, pass the request to the file server
+			logHandler(fileServer).ServeHTTP(w, r)
+		}
+	}))
 
 	http.HandleFunc("/certificate.cer", func(w http.ResponseWriter, r *http.Request) {
 		logRequest(r)
@@ -125,7 +145,7 @@ func logHandler(next http.Handler) http.Handler {
 
 func logRequest(r *http.Request) {
 	fmt.Print("\033[A\r")
-	fmt.Printf("WEB.SERVER-LOG:         [%s] %s %s  \n", r.RemoteAddr, r.Method, r.URL)
+	fmt.Printf("WEB.SERVER-LOG:         [%s] %s %s%s  \n", r.RemoteAddr, r.Method, r.Host, r.URL)
 	resetCommand()
 }
 
