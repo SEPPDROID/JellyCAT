@@ -192,5 +192,121 @@ function showServerErrorScreen(){
 }
 
 function authenticateJellyfin(){
-    console.log("yapppa!")
+    var serverAddress = atv.localStorage['jellyfin_server_address'];
+    var username = atv.localStorage['jellyfin_username'];
+    var password = atv.localStorage['jellyfin_password'];
+
+    var xhttp = new XMLHttpRequest();
+    var url = serverAddress + '/Users/AuthenticateByName';
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState === 4) {
+            if (this.status === 200) {
+                var responseJson = JSON.parse(this.responseText);
+                // console.log("Authentication successful. Response:", responseJson);
+                // Extracting ServerId and AccessToken
+                var serverId = responseJson.ServerId;
+                var accessToken = responseJson.AccessToken;
+                // Storing ServerId and AccessToken in atv storage
+                atv.localStorage['jellyfin_serverid'] = serverId;
+                atv.localStorage['jellyfin_authtoken'] = accessToken;
+                atv.localStorage['jellyfin_loggedin'] = '1';
+                showAuthSuccessScreen();
+            } else {
+                console.error("Error occurred during authentication. Status:", this.status);
+                console.error("Response:", this.responseText);
+                showAuthErrorScreen();
+            }
+        }
+    };
+
+    xhttp.onerror = function() {
+        console.error("An error occurred during the request.");
+        showAuthErrorScreen();
+    };
+
+    xhttp.open("POST", url, true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+
+    // Constructing the Authorization header
+    var token = "";
+    var client = "JellyCAT Apple TV";
+    var version = atv.jcathost.Version;
+    var deviceId = atv.device.udid;
+    var device = atv.device.displayName;
+
+    var authHeaderValue = 'MediaBrowser Token="' + encodeURIComponent(token) + '", ' +
+        'Client="' + encodeURIComponent(client) + '", ' +
+        'Version="' + encodeURIComponent(version) + '", ' +
+        'DeviceId="' + encodeURIComponent(deviceId) + '", ' +
+        'Device="' + encodeURIComponent(device) + '"';
+
+    xhttp.setRequestHeader("Authorization", authHeaderValue);
+
+    var requestBody = JSON.stringify({
+        "Username": username,
+        "Pw": password
+    });
+
+    xhttp.send(requestBody);
+}
+
+function showAuthErrorScreen(){
+    var xmlstr = '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<atv>' +
+        '  <body>' +
+        '    <dialog id="com.jellycat.jellyfin-connect-error-dialog">' +
+        '      <title>Error Authenticating Jellyfin Server:</title>' +
+        '      <description>\n' +
+        'We could not authenticate the user you provided. Please check the username or password. Error logged.\n\n\n' +
+        'Please let us know if you believe this is an error\n\nPress MENU to go back</description>' +
+        '    </dialog>' +
+        '  </body>' +
+        '</atv>';
+    xmlDoc = atv.parseXML(xmlstr);
+    atv.loadXML(xmlDoc);
+}
+
+function showAuthSuccessScreen(){
+    var xmlstr =
+        '<?xml version="1.0" encoding="UTF-8"?>' +
+        '<atv>' +
+        '<head>' +
+        '<script src="http://jcathost.dns/js/jcm.js"/>' +
+        '<script src="http://jcathost.dns/js/jellyfin-setup.js"/>' +
+        '</head>' +
+        '<body>' +
+        '<optionDialog id="com.jellycat.jellyfin-connect-success-dialog">' +
+        '<header>' +
+        '<simpleHeader accessibilityLabel="Dialog with Options">' +
+        '<title>Success:</title>' +
+        '</simpleHeader>' +
+        '</header>' +
+        '<description>Yay! You\'ve logged in successfully. Feel free to exit settings and dive in!</description>' +
+        '<menu>' +
+        '<initialSelection>' +
+        '<row>0</row>' +
+        '</initialSelection>' +
+        '<sections>' +
+        '<menuSection>' +
+        '<items>' +
+        '<oneLineMenuItem id="list_0" accessibilityLabel="Option 1" onSelect="goHome();">' +
+        '<label>Start</label>' +
+        '</oneLineMenuItem>' +
+        '<oneLineMenuItem id="list_1" accessibilityLabel="Option 2" onSelect="atv.unloadPage();">' +
+        '<label>Go back</label>' +
+        '</oneLineMenuItem>' +
+        '</items>' +
+        '</menuSection>' +
+        '</sections>' +
+        '</menu>' +
+        '</optionDialog>' +
+        '</body>' +
+        '</atv>';
+    xmlDoc = atv.parseXML(xmlstr);
+    atv.loadXML(xmlDoc);
+}
+
+function goHome(){
+    atvutils.loadURL("https://" + atv.jcathost.SigHost + "/xml/home.xml");
 }

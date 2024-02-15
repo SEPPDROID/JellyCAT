@@ -3,6 +3,7 @@
 //  \____\
 
 function printSessionStorage() {
+    console.log("======== Printing ATV Session storage ===========")
 
     var keys = ['test', 'exampleKey'];
 
@@ -17,8 +18,9 @@ function printSessionStorage() {
 }
 
 function printLocalStorage() {
+    console.log("======== Printing ATV Local storage ===========")
 
-    var keys = ['test', 'jellyfin_server_address', 'jellyfin_username', 'jellyfin_password', 'jellyfin_auth'];
+    var keys = ['test', 'jellyfin_server_address', 'jellyfin_username', 'jellyfin_password', 'jellyfin_serverid', 'jellyfin_authtoken', 'jellyfin_loggedin'];
 
     keys.forEach(function(key) {
         var value = atv.localStorage.getItem(key);
@@ -42,4 +44,7 @@ function setTestLocalStorageItem() {
     console.log('Test item set in localStorage.');
 }
 
-
+function setFakeLogout() {
+    console.log("Setting fake Jellyfin logout Key")
+    atv.localStorage['jellyfin_loggedin'] = '0';
+}

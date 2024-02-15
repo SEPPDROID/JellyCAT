@@ -38,7 +38,7 @@
                             <oneLineMenuItem id="list_5" accessibilityLabel="Option 6" onSelect="console.log('UDID: ' + atv.device.udid);">
                                 <label>Print device UDID (log)</label>
                             </oneLineMenuItem>
-                            <oneLineMenuItem id="list_6" accessibilityLabel="Option 7" onSelect="console.log('UDID: ' + atv.device.displayName);">
+                            <oneLineMenuItem id="list_6" accessibilityLabel="Option 7" onSelect="console.log('DN: ' + atv.device.displayName);">
                                 <label>Print device DisplayName (log)</label>
                             </oneLineMenuItem>
                             <oneLineMenuItem id="list_7" accessibilityLabel="Option 8" onSelect="console.log('Unloading page'); atv.unloadPage();">

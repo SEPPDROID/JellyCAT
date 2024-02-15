@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atv>
+    <head>
+        <script src="http://jcathost.dns/js/jcm.js"/>
+        <script src="http://jcathost.dns/js/search.js"/>
+    </head>
+    <body>
+        <optionList id="fakeUpdater" autoSelectSingleItem="true">
+        <items>
+            <oneLineMenuItem id="0" onSelect="checkLogin();">
+                <label></label>
+        </oneLineMenuItem>
+        </items>
+        </optionList>
+    </body>
+</atv>

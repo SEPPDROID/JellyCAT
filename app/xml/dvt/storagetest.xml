@@ -11,16 +11,19 @@
                 <oneLineMenuItem id="list_0"  accessibilityLabel="Set test session storage key" onSelect="setTestSessionStorageItem();">
                     <label>Set ATV APP session storage key (test)</label>
                 </oneLineMenuItem>
-                <oneLineMenuItem id="list_0"  accessibilityLabel="Set test local storage key" onSelect="setTestLocalStorageItem();">
+                <oneLineMenuItem id="list_1"  accessibilityLabel="Set test local storage key" onSelect="setTestLocalStorageItem();">
                     <label>Set ATV APP local storage key (test)</label>
                 </oneLineMenuItem>
-                <oneLineMenuItem id="list_1"  accessibilityLabel="Print session storage (log)" onSelect="printSessionStorage();">
+                <oneLineMenuItem id="list_2"  accessibilityLabel="Set fake logout local storage key" onSelect="setFakeLogout();">
+                    <label>Set Fake Jellyfin Logged Out key</label>
+                </oneLineMenuItem>
+                <oneLineMenuItem id="list_3"  accessibilityLabel="Print session storage (log)" onSelect="printSessionStorage();">
                     <label>Print ATV App session storage (log)</label>
                 </oneLineMenuItem>
-                <oneLineMenuItem id="list_2"  accessibilityLabel="Print ATV storage (log)" onSelect="printLocalStorage();">
+                <oneLineMenuItem id="list_4"  accessibilityLabel="Print ATV storage (log)" onSelect="printLocalStorage();">
                     <label>Print ATV App local storage (log)</label>
                 </oneLineMenuItem>
-                <oneLineMenuItem id="list_3" accessibilityLabel="Clear ATV Storage and exit" onSelect="console.log('CLEARING ALL APP STORAGE AND EXITING APP'); atv.localStorage.clear(); atv.sessionStorage.clear(); atv.exitApp();">
+                <oneLineMenuItem id="list_5" accessibilityLabel="Clear ATV Storage and exit" onSelect="console.log('CLEARING ALL APP STORAGE AND EXITING APP'); atv.localStorage.clear(); atv.sessionStorage.clear(); atv.exitApp();">
                     <label>Clear ATV App Storage and exit App</label>
                 </oneLineMenuItem>
             </items>

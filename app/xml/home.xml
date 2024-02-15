@@ -8,25 +8,29 @@
             <navigation currentIndex="0">
                 <navigationItem id="nav1">
                     <title>Home</title>
-                    <url></url>
+                    <url>http://jcathost.dns/xml/homescreen.xml</url>
                 </navigationItem>
                 <navigationItem id="nav2">
                     <title>Favorites</title>
-                    <url></url>
+                    <url>http://jcathost.dns/xml/favoritesscreen.xml</url>
                 </navigationItem>
                 <navigationItem id="nav3">
                     <title>Movies</title>
-                    <url></url>
+                    <url>http://jcathost.dns/xml/movies.xml</url>
                 </navigationItem>
                 <navigationItem id="nav4">
                     <title>TV-Shows</title>
-                    <url></url>
+                    <url>http://jcathost.dns/xml/shows.xml</url>
                 </navigationItem>
                 <navigationItem id="nav5">
-                    <title>Search</title>
-                    <url></url>
+                    <title>Music</title>
+                    <url>http://jcathost.dns/xml/music.xml</url>
                 </navigationItem>
                 <navigationItem id="nav6">
+                    <title>Search</title>
+                    <url>http://jcathost.dns/xml/search.xml</url>
+                </navigationItem>
+                <navigationItem id="nav7">
                     <title>Settings</title>
                     <url>http://jcathost.dns/xml/settings.xml</url>
                 </navigationItem>

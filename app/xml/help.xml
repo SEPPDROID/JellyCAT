@@ -3,7 +3,10 @@
     <body>
         <dialog id="com.jellycat.help-page">
             <title>Help</title>
-            <description>For assistance, please visit the JellyCAT documentation at https://github.com/SEPPDROID/JellyCAT/. If you encounter any issues, kindly raise them on the GitHub repository at https://github.com/SEPPDROID/JellyCAT/issues.</description>
+            <description>For assistance, please visit the JellyCAT documentation at https://github.com/SEPPDROID/JellyCAT/. If you encounter any issues, kindly raise them on the GitHub repository at https://github.com/SEPPDROID/JellyCAT/issues.
+
+
+Press MENU to go back</description>
         </dialog>
     </body>
 </atv>
