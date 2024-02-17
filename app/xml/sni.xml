@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atv>
+    <body>
+        <searchResults id="com.jellycat.searchResults">
+            <menu>
+                <sections>
+                    <menuSection>
+                        <header>
+                            <horizontalDivider alignment="center" accessibilityLabel="Error">
+                                <title>Error</title>
+                            </horizontalDivider>
+                        </header>
+                        <items>
+                            <posterMenuItem id="list_0" accessibilityLabel="Poster Menu Item for Movie 1" onSelect="" onPlay="">
+                                <label>Search is not implemented (yet)</label>
+                                <label2>sorry</label2>
+                                <image></image>
+                            </posterMenuItem>
+                        </items>
+                    </menuSection>
+                </sections>
+            </menu>
+        </searchResults>
+    </body>
+</atv>

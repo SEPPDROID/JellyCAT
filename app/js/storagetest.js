@@ -20,7 +20,7 @@ function printSessionStorage() {
 function printLocalStorage() {
     console.log("======== Printing ATV Local storage ===========")
 
-    var keys = ['test', 'jellyfin_server_address', 'jellyfin_username', 'jellyfin_password', 'jellyfin_serverid', 'jellyfin_authtoken', 'jellyfin_loggedin'];
+    var keys = ['test', 'jellyfin_server_address', 'jellyfin_username', 'jellyfin_password', 'jellyfin_serverid', 'jellyfin_authtoken', 'jellyfin_loggedin', 'jellyfin_user_id'];
 
     keys.forEach(function(key) {
         var value = atv.localStorage.getItem(key);

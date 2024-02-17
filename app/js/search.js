@@ -25,7 +25,7 @@ function renderSearchScreen() {
         '          <title>Search</title>' +
         '        </simpleHeader>' +
         '      </header>' +
-        '      <baseURL></baseURL>' +
+        '      <baseURL>http://jcathost.dns/xml/sni.xml?s=</baseURL>' +
         '    </search>' +
         '  </body>' +
         '</atv>';

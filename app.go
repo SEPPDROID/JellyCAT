@@ -91,39 +91,53 @@ func displayHelp() {
 }
 
 func displayCinfo() {
-	// Current config information, also so I can see what the actual value is
+	var dnsStatus string
+	var webStatus string
+
+	if config.DnsServEN {
+		dnsStatus = "Enabled"
+	} else {
+		dnsStatus = "Disabled"
+	}
+
+	if config.WebServEN {
+		webStatus = "Enabled"
+	} else {
+		webStatus = "Disabled"
+	}
+
 	fmt.Println()
-	fmt.Println("=========== JellyCAT Config =============")
-	fmt.Println("|    Current config & Information:     	|")
-	fmt.Println("=========================================")
-	fmt.Println("|           *** Services ***           	|")
-	fmt.Println("|                                     	|")
-	fmt.Println("|        DNS SERVER : Enabled         	|") // nice static print, nerd hehehe
-	fmt.Println("|        WEB SERVER : Enabled         	|")
-	fmt.Println("|                                     	|")
-	fmt.Println("|        *** Current Config ***        	|")
-	fmt.Println("|                                     	|")
-	fmt.Println("|             *** DNS ***        	|")
-	fmt.Println("|                                     	|")
-	fmt.Println("|   hijack_ip    = ", config.HijackIP, "	|")
-	fmt.Println("|   hijack_app   = ", config.HijackApp, "	|")
-	fmt.Println("|   hijack_img   = ", config.HijackImg, "	|")
-	fmt.Println("|   forward_ip   = ", config.ForwardIP, "		|") // any big ip address and my design tabs too far :( haha
-	fmt.Println("|   forward_port = ", config.ForwardPort, "			|")
-	fmt.Println("|                                     	|")
-	fmt.Println("|             *** WEB ***        	|")
-	fmt.Println("|                                     	|")
-	fmt.Println("|   https_port   = ", config.HttpsPort, "		|")
-	fmt.Println("|   https_port   = ", config.HttpPort, "		|")
-	fmt.Println("|                                     	|")
-	fmt.Println("|           *** CERTGEN ***        	|")
-	fmt.Println("|                                     	|")
-	fmt.Println("|   common_name   = ", config.CertName, "	|")
-	fmt.Println("|                                     	|")
-	fmt.Println("=========================================")
-	fmt.Println("| go to brain.seppjm.com/#         	|")
-	fmt.Println("| for more information & example cfg	|")
-	fmt.Println("=========================================")
+	fmt.Println("============ JellyCAT Config =============")
+	fmt.Println("|    Current config & Information:     	 |")
+	fmt.Println("==========================================")
+	fmt.Println("|           *** Services ***           	 |")
+	fmt.Println("|                                     	 |")
+	fmt.Println("|        DNS SERVER :", dnsStatus, "         	 |")
+	fmt.Println("|        WEB SERVER :", webStatus, "         	 |")
+	fmt.Println("|                                     	 |")
+	fmt.Println("|        *** Current Config ***        	 |")
+	fmt.Println("|                                     	 |")
+	fmt.Println("|             *** DNS ***        	 |")
+	fmt.Println("|                                     	 |")
+	fmt.Println("|   hijack_ip    = ", config.HijackIP, "	 |")
+	fmt.Println("|   hijack_app   = ", config.HijackApp, "	 |")
+	fmt.Println("|   hijack_img   = ", config.HijackImg, "	 |")
+	fmt.Println("|   forward_ip   = ", config.ForwardIP, "		 |") // any big ip address and my design tabs too far :( haha
+	fmt.Println("|   forward_port = ", config.ForwardPort, "			 |")
+	fmt.Println("|                                     	 |")
+	fmt.Println("|             *** WEB ***        	 |")
+	fmt.Println("|                                     	 |")
+	fmt.Println("|   https_port   = ", config.HttpsPort, "		 |")
+	fmt.Println("|   https_port   = ", config.HttpPort, "		 |")
+	fmt.Println("|                                     	 |")
+	fmt.Println("|           *** CERTGEN ***        	 |")
+	fmt.Println("|                                     	 |")
+	fmt.Println("|   common_name   = ", config.CertName, "	 |")
+	fmt.Println("|                                     	 |")
+	fmt.Println("==========================================")
+	fmt.Println("| https://github.com/SEPPDROID/JellyCAT  |")
+	fmt.Println("| for more information & example cfg	 |")
+	fmt.Println("==========================================")
 	fmt.Println()
 	fmt.Println()
 }

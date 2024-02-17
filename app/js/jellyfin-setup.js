@@ -207,9 +207,11 @@ function authenticateJellyfin(){
                 // Extracting ServerId and AccessToken
                 var serverId = responseJson.ServerId;
                 var accessToken = responseJson.AccessToken;
+                var userID = responseJson.SessionInfo.UserId;
                 // Storing ServerId and AccessToken in atv storage
                 atv.localStorage['jellyfin_serverid'] = serverId;
                 atv.localStorage['jellyfin_authtoken'] = accessToken;
+                atv.localStorage['jellyfin_user_id'] = userID;
                 atv.localStorage['jellyfin_loggedin'] = '1';
                 showAuthSuccessScreen();
             } else {
